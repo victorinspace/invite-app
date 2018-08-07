@@ -1,12 +1,31 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router() 
+const axios = require('axios')
 
-/* GET home page. */
-router.post('/user', function (req, res, next) {
-  console.log(req.body.username)
-  res.json({
-    message: 'user added'
-  })
+const data = {
+	users: [],
+	going: [],
+	notGoing: []
+}
+
+router.get('/users', (req, res,next) => {
+	
+	// Make axios call to API & fill up data
+	axios.get('https://randomuser.me/api/?results=100').then(resp => {
+		const users = resp.data.results.map( (user, i) => {
+			return {
+				id: i + 1,
+				name: `${user.name.first} ${user.name.last}`,
+				email: user.email,
+				phone: user.phone,
+				image: user.picture.large
+			}
+		})
+
+		data.users = users
+
+		res.json(users)
+	})
 })
 
 module.exports = router
