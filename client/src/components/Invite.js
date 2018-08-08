@@ -1,52 +1,24 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 
 class Invite extends Component {
-	state = {
-		id: '',
-		name: '',
-		phone: '',
-		email: '',
-		image: ''
-	}
-
-	componentDidMount() {
-		axios.get('/api/users').then(resp => {
-			console.log(resp.data)
-			this.setState({
-				name: resp.data[0].name,
-				phone: resp.data[0].phone,
-				email: resp.data[0].email,
-				image: resp.data[0].image
-			})
-		})
-	}
-
-	pleaseCome = e => {
-		console.log('PWETTY PLEEASSEEE')
-	}
-
-	goAway = e => {
-		console.log('NOOOOOOO')
-	}
 
 	render() {
 		return (
 			<div className="invite-card">
 
 				<div className="details">
-						<img src={this.state.image} alt=""/>
+						<img src="https://randomuser.me/api/portraits/men/19.jpg" alt=""/>
 					
 					{/* Name, Phone, Email */}
 					<div className="text-field">
 						<div className="info">
-							<span className="invitee-base">Name:</span><span className="invitee-info">{this.state.name}</span>
+							<span className="invitee-base">Name:</span><span className="invitee-info">Joe Schmo</span>
 						</div>
 						<div className="info">
-							<span className="invitee-base">Phone:</span><span className="invitee-info">{this.state.phone}</span>
+							<span className="invitee-base">Phone:</span><span className="invitee-info">555-555-555</span>
 						</div>
 						<div className="info">
-							<span className="invitee-base">Email:</span><span className="invitee-info">{this.state.email}</span>
+							<span className="invitee-base">Email:</span><span className="invitee-info">whatofit@aol.com</span>
 						</div>
 					</div>
 

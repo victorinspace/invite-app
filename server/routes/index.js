@@ -3,19 +3,17 @@ const router = express.Router()
 const axios = require('axios')
 const shortid = require('shortid')
 
-// store the user data
 const data = {
-	users: [],
-	going: [],
-	notGoing: []
+  users: [],
+  going: [],
+  notoing: []
 }
 
-// type: GET
 router.get('/users', (req, res, next) => {
-	// Only fill up new data if don't have any to being with
-	if (data.users.length === 0) {
-		// Make axios call to API & fill up user data
-		axios.get('https://randomuser.me/api/?results=100').then(resp => {
+
+	if (data.users.length === 0) { // make sure we need a call
+
+		axios.get(api).then(resp => {
 			// Fill up that data!
 			const users = resp.data.results.map( user => {
 				return {

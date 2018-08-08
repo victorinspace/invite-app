@@ -4,18 +4,36 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const routes = require('./routes/index')
+const peeps = 'https://randomuser.me/api/?inc=name,email,phone,picture'
 const app = express()
 
-// uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+const storage = {
+  users: [],
+  going: [],
+  notoing: []
+}
+
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Handle requests for API calls
 app.use('/api', routes)
+
+app.get('/', req, res, next) => {
+  request(peeps, (err, resp) => {
+    const body = JSON.parse(resp.body)
+    const peepDeets ={
+      picture: body.results[0].picture.large,
+      name: `${body.results[0].name.first} ${body.results[0].name.last}`,
+      email: body.results[0].email,
+      phone: body.results[0].phone
+    }
+
+    res.render('invite', data)
+  })
+}
 
 // ---- ERROR HANDLING ----
 // catch 404 and forward to error handler

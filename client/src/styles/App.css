@@ -11,7 +11,7 @@ html {
 /* Overall Card Styles */
 .invite-card {
 	width: 20vw;
-	height: 80vh;
+	height: 70vh;
 	margin: 60px auto;
 	background: #e1e1e1;
 	border: 2px solid #d0d0d0;
@@ -55,10 +55,23 @@ img {
 .button-field {
 	width: 100%;
 	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
 }
 
 button {
-	padding: 7px;
+	width: 50px;
+	padding: 10px;
+	border: none;
+}
+
+.invite {
+	background: #04c004;
+}
+
+.no-invite {
+	background: #F55141;
 }
 
 .fa {
