@@ -1,6 +1,6 @@
 import { createStore } from 'redux'
-import { mainReduce } from 'mainReduce'
+import inviteReducer from './reducers/inviteReducer'
 
-const store = createStore(mainReduce)
+const store = createStore(inviteReducer) 
 
 export default store

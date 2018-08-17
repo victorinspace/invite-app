@@ -1,31 +1,59 @@
 import React, { Component } from 'react'
+import { getUser, changeStatusGoing, changeStatusNotGoing, getGoing, getNotGoing } from '../actions/inviteActions'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class Invite extends Component {
+	state = {
+		status: []
+	}
+
+	componentDidMount() {
+		getUser()
+		getGoing()
+		getNotGoing()	
+	}
+
+	going = (e) => {
+		changeStatusGoing(e.target.value, 'going')
+	}
+
+	notGoing = (e) => {
+		changeStatusNotGoing(e.target.value, 'notgoing')
+	}
 
 	render() {
 		return (
-			<div className="invite-card">
+			<div className="invite-container">
+				<div>
+					<Link to="/going">Going: {this.props.going.length}</Link>
+					<Link to="/notgoing">Not Going: {this.props.notgoing.length}</Link>
+				</div>
 
 				<div className="details">
-						<img src="https://randomuser.me/api/portraits/men/19.jpg" alt=""/>
+					<div>
+						<img src={this.props.user.image} alt=""/>
+					</div>
 					
-					{/* Name, Phone, Email */}
 					<div className="text-field">
 						<div className="info">
-							<span className="invitee-base">Name:</span><span className="invitee-info">Joe Schmo</span>
+							<span className="invitee-info">Name: {this.props.user.name}</span>
 						</div>
 						<div className="info">
-							<span className="invitee-base">Phone:</span><span className="invitee-info">555-555-555</span>
+							<span className="invitee-info">Phone: {this.props.user.phone}</span>
 						</div>
 						<div className="info">
-							<span className="invitee-base">Email:</span><span className="invitee-info">whatofit@aol.com</span>
+							<span className="invitee-info">Email: {this.props.user.email}</span>
 						</div>
 					</div>
 
-					{/* Invite or Not Invite */}
 					<div className="button-field">
-						<button onClick={this.goAway} className="no-invite"><i className="fa fa-ban"></i></button>
-						<button onClick={this.pleaseCome} className="invite"><i className="fa fa-check"></i></button>
+						<button value={this.props.user.id} onClick={this.notGoing} className="no-invite">
+							<i className="fa fa-ban"></i>
+						</button>
+						<button value={this.props.user.id} onClick={this.going} className="invite">
+							<i className="fa fa-check"></i>
+						</button>
 					</div>
 				</div>
 
@@ -34,4 +62,12 @@ class Invite extends Component {
 	}
 }
 
-export default Invite
+function mapStateToProps(appState) {
+	return {
+		user: appState.user,
+		going: appState.going,
+		notgoing: appState.notgoing
+	}
+}
+
+export default connect(mapStateToProps)(Invite)

@@ -21,19 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api', routes)
 
-app.get('/', req, res, next) => {
-  request(peeps, (err, resp) => {
-    const body = JSON.parse(resp.body)
-    const peepDeets ={
-      picture: body.results[0].picture.large,
-      name: `${body.results[0].name.first} ${body.results[0].name.last}`,
-      email: body.results[0].email,
-      phone: body.results[0].phone
-    }
-
-    res.render('invite', data)
-  })
-}
+app.listen()
 
 // ---- ERROR HANDLING ----
 // catch 404 and forward to error handler

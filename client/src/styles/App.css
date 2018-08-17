@@ -9,7 +9,7 @@ html {
 }
 
 /* Overall Card Styles */
-.invite-card {
+.invite-container {
 	width: 20vw;
 	height: 70vh;
 	margin: 60px auto;
