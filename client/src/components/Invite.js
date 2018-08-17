@@ -24,26 +24,37 @@ class Invite extends Component {
 
 	render() {
 		return (
-			<div className="invite-container">
-				<div>
-					<Link to="/going">Going: {this.props.going.length}</Link>
-					<Link to="/notgoing">Not Going: {this.props.notgoing.length}</Link>
+			<div className="overall-container">
+
+				<div className="going-notgoing">
+					<Link to="/going">
+						Going: {this.props.going.length}
+					</Link>
+					<Link to="/notgoing">
+						Not Going: {this.props.notgoing.length}
+					</Link>
 				</div>
 
-				<div className="details">
+				<div className="user-container">
 					<div>
-						<img src={this.props.user.image} alt=""/>
+						<img className="profile-image" src={this.props.user.image} alt=""/>
 					</div>
 					
 					<div className="text-field">
 						<div className="info">
-							<span className="invitee-info">Name: {this.props.user.name}</span>
+							<span className="invitee-info">
+								Name: {this.props.user.name}
+							</span>
 						</div>
 						<div className="info">
-							<span className="invitee-info">Phone: {this.props.user.phone}</span>
+							<span className="invitee-info">
+								Phone: {this.props.user.phone}
+							</span>
 						</div>
 						<div className="info">
-							<span className="invitee-info">Email: {this.props.user.email}</span>
+							<span className="invitee-info">
+								Email: {this.props.user.email}
+							</span>
 						</div>
 					</div>
 

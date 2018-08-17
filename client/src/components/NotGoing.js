@@ -9,22 +9,22 @@ class NotGoing extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="collection">
 				{this.props.notgoing.map((data, i) => (
 					<div key={data.id}>
 						<div>
-							<img src={data.image} alt=""/>
+							<img className="profile-image" src={data.image} alt=""/>
 						</div>
 						
-						<div>
-							<div>
-								<span>Name: {data.name}</span>
+						<div className="text-field">
+							<div className="info">
+								<span className="invitee-info">Name: {data.name}</span>
 							</div>
-							<div>
-								<span>Phone: {data.phone}</span>
+							<div className="info">
+								<span className="invitee-info">Phone: {data.phone}</span>
 							</div>
-							<div>
-								<span>Email: {data.email}</span>
+							<div className="info">
+								<span className="invitee-info">Email: {data.email}</span>
 							</div>
 						</div>
 					</div>

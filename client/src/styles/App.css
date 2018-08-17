@@ -8,29 +8,52 @@ html {
 	font-family: sans-serif;
 }
 
-/* Overall Card Styles */
-.invite-container {
+/* Going or Not Going */
+.going-notgoing {
+	margin: 0 auto;
 	width: 20vw;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 10px 0;
+}
+
+
+/****************************************
+	USER CONTAINER
+****************************************/
+
+/* Overall Card Styles */
+.overall-container {
+	margin-top: 60px;
+}
+
+.going-container {
+	display: flex;
+	width: 80%;
+}
+
+/* User Container */
+.user-container {
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	width: 22vw;
 	height: 70vh;
-	margin: 60px auto;
 	background: #e1e1e1;
 	border: 2px solid #d0d0d0;
 }
 
-/* Invitee Info Overall Styles */
-.details {
-	margin: 0 auto;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-img {
-	margin: 10% auto;
+/* Profile Image */
+.profile-image {
 	border: 2px solid #787878;
 	border-radius: 100%;
+	display: flex;
+	justify-content: center;
 	filter: drop-shadow(2px 2px 10px #8f8f8f);
 }
 
+
+/* USER INFORMATION */
 /* Text Styles */
 .text-field {
 	padding-top: 15px;
@@ -52,6 +75,7 @@ img {
 }
 
 /* Button Styles */
+/*---------------------------------------*/
 .button-field {
 	width: 100%;
 	padding: 10px;
@@ -64,6 +88,7 @@ button {
 	width: 50px;
 	padding: 10px;
 	border: none;
+	cursor: pointer;
 }
 
 .invite {

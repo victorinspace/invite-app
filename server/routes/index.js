@@ -6,13 +6,12 @@ const shortid = require('shortid')
 const data = {
   users: [],
   going: [],
-  notoing: []
+  notgoing: []
 }
 
 router.get('/users', (req, res, next) => {
 	if (data.users.length === 0) { // make sure we need a call
-		axios.get('https://randomuser.me/api/?results=100').then(resp => {
-			// Fill up that data!
+		axios.get('https://randomuser.me/api/?results=100').then( resp => {
 			let users = resp.data.results.map( user => {
 				return {
 					id: shortid.generate(), // Make super unique ID for each user
@@ -39,14 +38,14 @@ router.patch('/users/:id', (req, res, next) => {
 
 	user.status = status
 	data[status].push(user)
-	data.users = data.users.filter(user => user.id !== id)
+	data.users = data.users.filter(user => user.id !== id) // get rid of what doesn't match
 	res.json(user)
 })
 
 
 router.get('/users/:id', (req, res, next) => {
 	const id = req.params.id
-	const user = data.users.find(user => user.id === id)
+	const user = data.users.find( user => user.id === id)
 	res.json(user)
 })
 
